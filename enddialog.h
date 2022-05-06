@@ -1,5 +1,5 @@
-#ifndef ENDDIAALOG_H
-#define ENDDIAALOG_H
+#ifndef ENDDIALOG_H
+#define ENDDIALOG_H
 
 #include <QLabel>
 #include <QWidget>
@@ -14,17 +14,14 @@ class EndDialog : public QDialog
     Q_OBJECT
     QPushButton *newgame;
     QPushButton *exit;
-    QVBoxLayout *VBox;
-    QHBoxLayout *HBox;
+    QVBoxLayout *vBox;
+    QHBoxLayout *hBox;
 public:
     EndDialog();
     QLabel *label;
-public slots:
-    void restart();
-    void quit();
 signals:
-    void requestRestart();
+    void requestMenu();
     void requestQuit();
 };
 
-#endif // ENDDIAALOG_H
+#endif // ENDDIALOG_H

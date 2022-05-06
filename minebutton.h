@@ -7,7 +7,6 @@
 
 class MineButton: public QPushButton {
     Q_OBJECT
-    int flagged = 0;
     void mouseReleaseEvent(QMouseEvent *e);
 public:
     int x;

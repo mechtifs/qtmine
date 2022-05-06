@@ -1,28 +1,28 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QElapsedTimer>
 #include <QMainWindow>
-#include "enddiaalog.h"
+#include "enddialog.h"
+#include "menudialog.h"
 #include "minefield.h"
-#include "startdialog.h"
 
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
-    StartDialog *s;
-    MineField *minefield;
+    MenuDialog *m;
+    MineField *minefield = NULL;
     EndDialog *e;
+    int initialTime = 0;
+    bool isEnded = false;
 public:
-    static int w;
-    static int h;
-    static int n;
     MainWindow(QWidget *parent = nullptr);
-public slots:
+private slots:
+    void enable();
     void start();
     void show();
+    void show(int mines, int left, int time, QBitArray * saveData);
     void showEnd(bool hasWon = false);
     void quit();
-    void restart();
+    void showMenu();
 };
 #endif // MAINWINDOW_H

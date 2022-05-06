@@ -16,16 +16,16 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        mainwindow.cpp
         mainwindow.h
+        mainwindow.cpp
+        menudialog.h
+        menudialog.cpp
         minebutton.h
         minebutton.cpp
         minefield.h
         minefield.cpp
         startdialog.h
         startdialog.cpp
-        enddiaalog.h
-        enddiaalog.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
