@@ -10,31 +10,29 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QBitArray>
-//#include <QDebug>
-
 
 class MenuDialog : public QDialog {
     Q_OBJECT
-    QSpinBox * width;
-    QSpinBox * height;
-    QSpinBox * number;
-    QPushButton * submit;
-    QPushButton * cancel;
-    QPushButton * save;
-    QPushButton * load;
-    QVBoxLayout * vBox;
-    QFormLayout * form;
-    QHBoxLayout * hBox;
+    QSpinBox *width;
+    QSpinBox *height;
+    QSpinBox *number;
+    QPushButton *startButton;
+    QPushButton *quitButton;
+    QPushButton *saveButton;
+    QPushButton *loadButton;
+    QVBoxLayout *vBox;
+    QFormLayout *form;
+    QHBoxLayout *hBox;
+    QBitArray *mineData;
     int mines;
     int left;
     int time;
-    QBitArray * saveData;
 public:
+    MenuDialog(int mines = 0, int left = 0, int time = 0, QBitArray *mineData = NULL);
     static int w;
     static int h;
     static int n;
     static bool disabled;
-    MenuDialog(int mines = 0, int left = 0, int time = 0, QBitArray * saveData = NULL);
 private slots:
     void onSave();
     void onLoad();
@@ -45,9 +43,8 @@ private slots:
     void quit();
 signals:
     void requestShow();
-    void requestShow(int mines, int left, int time, QBitArray * saveData);
+    void requestShow(int mines, int left, int time, QBitArray *mineData);
     void closeBox();
 };
-
 
 #endif // MENUDIALOG_H

@@ -1,17 +1,22 @@
 #include "enddialog.h"
 
 EndDialog::EndDialog() {
-    newgame = new QPushButton("New Game");
-    exit = new QPushButton("Quit");
-    label = new QLabel("Have a retry?");
-    vBox = new QVBoxLayout;
+    // Initialize buttons
+    menuButton = new QPushButton("New Game");
+    connect(menuButton, SIGNAL(clicked()), this, SLOT(reject()));
+    connect(menuButton, SIGNAL(clicked()), this, SIGNAL(requestMenu()));
+    quitButton = new QPushButton("Quit");
+    connect(quitButton, SIGNAL(clicked()), this, SIGNAL(requestQuit()));
+    // Initialize horizontal box layout
     hBox = new QHBoxLayout;
-    hBox->addWidget(newgame);
-    hBox->addWidget(exit);
+    hBox->addWidget(menuButton);
+    hBox->addWidget(quitButton);
+    // Initialize label
+    label = new QLabel("Have a retry?");
+    // Initialize vertical box layout
+    vBox = new QVBoxLayout;
     vBox->addWidget(label);
     vBox->addLayout(hBox, 1);
+    // Set main layout
     setLayout(vBox);
-    connect(newgame, SIGNAL(clicked()), this, SLOT(reject()));
-    connect(newgame, SIGNAL(clicked()), this, SIGNAL(requestMenu()));
-    connect(exit, SIGNAL(clicked()), this, SIGNAL(requestQuit()));
 }

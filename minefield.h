@@ -14,14 +14,13 @@
 #include <QBitArray>
 #include "minebutton.h"
 
-
 class MineField: public QWidget {
     Q_OBJECT
     int w;
     int h;
     int n;
     int flags = 0;
-    QWidget * widget;
+    QWidget *widget;
     QHBoxLayout *hBox;
     QVBoxLayout *vBox;
     QFrame *frame;
@@ -29,13 +28,13 @@ class MineField: public QWidget {
     QGridLayout *grid;
     QPushButton *menuButton;
     MineButton ***mine;
+    void loadData(QBitArray *mineData);
 public:
-    MineField(int w, int h, int n, int left = 0, int initialTime = 0, QBitArray * saveData = NULL);
+    MineField(int w, int h, int n, int left = 0, int initialTime = 0, QBitArray *mineData = NULL);
     QTimer *timer;
     QLCDNumber *mineLCD;
     QLCDNumber *timeLCD;
     QBitArray *exportData();
-    void setSize(int w, int h, int n);
 private slots:
     int countMines(int x, int y);
     void recursiveFlatten(int x, int y);

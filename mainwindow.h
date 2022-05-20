@@ -6,7 +6,6 @@
 #include "menudialog.h"
 #include "minefield.h"
 
-
 class MainWindow : public QMainWindow {
     Q_OBJECT
     MenuDialog *m;
@@ -20,9 +19,10 @@ private slots:
     void enable();
     void start();
     void show();
-    void show(int mines, int left, int time, QBitArray * saveData);
+    void show(int mines, int left, int time, QBitArray *mineData);
     void showEnd(bool hasWon = false);
     void quit();
     void showMenu();
 };
+
 #endif // MAINWINDOW_H

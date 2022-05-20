@@ -6,6 +6,7 @@ int MenuDialog::n;
 bool MenuDialog::disabled;
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent) {
+    // Set default value
     MenuDialog::w = 20;
     MenuDialog::h = 20;
     MenuDialog::n = 50;
@@ -14,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent) {
 }
 
 void MainWindow::start() {
+    // Show menu dialog at start
     m = new MenuDialog;
     setWindowTitle("QtMine");
     connect(m, SIGNAL(requestShow()), this, SLOT(show()));
@@ -23,6 +25,7 @@ void MainWindow::start() {
 }
 
 void MainWindow::show() {
+    // Show main window
     isEnded = false;
     minefield = new MineField(MenuDialog::w, MenuDialog::h, MenuDialog::n);
     setCentralWidget(minefield);
@@ -31,13 +34,14 @@ void MainWindow::show() {
     QWidget::show();
 }
 
-void MainWindow::show(int mines, int left, int initialTime, QBitArray * saveData) {
+void MainWindow::show(int mines, int left, int initialTime, QBitArray * mineData) {
+    // Show main window with data
     if (minefield) {
         delete minefield;
     }
     isEnded = false;
     this->initialTime = initialTime;
-    minefield = new MineField(MenuDialog::w, MenuDialog::h, mines, left, initialTime, saveData);
+    minefield = new MineField(MenuDialog::w, MenuDialog::h, mines, left, initialTime, mineData);
     setCentralWidget(minefield);
     resize(25 * MenuDialog::w + 37, 25 * MenuDialog::h + 93);
     connect(minefield, SIGNAL(requestMenu()), this, SLOT(showMenu()));
@@ -45,6 +49,7 @@ void MainWindow::show(int mines, int left, int initialTime, QBitArray * saveData
 }
 
 void MainWindow::showEnd(bool hasWon) {
+    // Show end dialog
     isEnded = true;
     setDisabled(true);
     e = new EndDialog;
@@ -71,6 +76,7 @@ void MainWindow::enable() {
 }
 
 void MainWindow::showMenu() {
+    // Show menu dialog
     setDisabled(true);
     minefield->timer->stop();
     MenuDialog::disabled = MineButton::isFirst || isEnded;

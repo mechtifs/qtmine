@@ -8,12 +8,10 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-
-class EndDialog : public QDialog
-{
+class EndDialog : public QDialog {
     Q_OBJECT
-    QPushButton *newgame;
-    QPushButton *exit;
+    QPushButton *menuButton;
+    QPushButton *quitButton;
     QVBoxLayout *vBox;
     QHBoxLayout *hBox;
 public:
